@@ -22,7 +22,12 @@ public class CategoriaService {
     }
 
     public List<CategoriaDTO> listar(Long id) {
-        List<CategoriaDTO> categoriaDTOS = categoriaRepository.findByCategoria(id).stream().map(CategoriaDTO::new).toList();
-        return categoriaDTOS;
+        if (id == 0) {
+            return categoriaRepository.findAll().stream().map(CategoriaDTO::new).toList();
+        } else {
+            return categoriaRepository.findById(id)
+                    .map(categoria -> List.of(new CategoriaDTO(categoria)))
+                    .orElse(null);
+        }
     }
 }

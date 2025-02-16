@@ -26,6 +26,10 @@ public class CategoriaController {
     @GetMapping
     public ResponseEntity<List<CategoriaDTO>> listarCategorias(@RequestParam("id") Long id) {
         List<CategoriaDTO> categorias = categoriaService.listar(id);
+
+        if (id != 0 && (categorias == null || categorias.isEmpty())) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(categorias);
+        }
         return ResponseEntity.status(HttpStatus.OK).body(categorias);
     }
 }
