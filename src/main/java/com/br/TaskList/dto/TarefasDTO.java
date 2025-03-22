@@ -25,5 +25,4 @@ public record TarefasDTO(
                 t.getCategoria()
                 );
     }
-
 }

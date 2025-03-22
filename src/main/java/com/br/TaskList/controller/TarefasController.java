@@ -1,5 +1,6 @@
 package com.br.TaskList.controller;
 
+import com.br.TaskList.dto.StatusTarefas;
 import com.br.TaskList.dto.TarefasDTO;
 import com.br.TaskList.entities.Tarefas;
 import com.br.TaskList.service.TarefasService;
@@ -7,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -24,8 +24,10 @@ public class TarefasController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TarefasDTO>> tarefas(@RequestParam Long id) {
-        List<TarefasDTO> tarefas = tarefasService.buscaTarefas(id);
+    public ResponseEntity<List<TarefasDTO>> tarefas(
+            @RequestParam(required = false, defaultValue = "0") Long id,
+            @RequestParam(required = false) StatusTarefas status) {
+        List<TarefasDTO> tarefas = tarefasService.buscaTarefas(id, status);
 
         if(id != 0 && (tarefas == null || tarefas.isEmpty())) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(tarefas);
