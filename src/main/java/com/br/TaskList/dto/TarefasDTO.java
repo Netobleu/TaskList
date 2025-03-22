@@ -2,7 +2,6 @@ package com.br.TaskList.dto;
 
 import com.br.TaskList.entities.Categoria;
 import com.br.TaskList.entities.Tarefas;
-import org.hibernate.engine.spi.Status;
 
 import java.time.LocalDate;
 

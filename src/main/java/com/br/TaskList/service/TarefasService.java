@@ -6,6 +6,10 @@ import com.br.TaskList.repository.TarefasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class TarefasService {
 
@@ -23,4 +27,14 @@ public class TarefasService {
 
             return tarefasRepository.save(tarefas);
         }
+
+    public List<TarefasDTO> buscaTarefas(Long id) {
+            if (id == 0) {
+                return tarefasRepository.findAll().stream().map(TarefasDTO::new).toList();
+            } else {
+                return tarefasRepository.findById(id)
+                        .map(tarefas -> List.of(new TarefasDTO(tarefas)))
+                        .orElse(null);
+            }
+    }
 }
