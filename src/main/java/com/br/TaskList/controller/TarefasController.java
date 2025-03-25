@@ -35,4 +35,19 @@ public class TarefasController {
 
         return ResponseEntity.status(HttpStatus.OK).body(tarefas);
     }
+
+    @PutMapping
+    public ResponseEntity<TarefasDTO> atualizar(
+            @RequestParam Long id,
+            @RequestBody TarefasDTO tarefasDTO) {
+
+        TarefasDTO tarefaAtualizada = tarefasService.atualizarTarefa(id, tarefasDTO);
+
+        if (tarefaAtualizada == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+        return ResponseEntity.ok(tarefaAtualizada);
+
+    }
 }

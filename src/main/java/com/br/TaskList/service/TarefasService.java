@@ -6,6 +6,8 @@ import com.br.TaskList.entities.Tarefas;
 import com.br.TaskList.repository.TarefasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -41,4 +43,20 @@ public class TarefasService {
                         .toList();
             }
         }
+
+    public TarefasDTO atualizarTarefa(Long id, TarefasDTO tarefasDTO) {
+        return tarefasRepository.findById(id)
+                .map(tarefas -> {
+                    tarefas.setTitulo(tarefasDTO.titulo());
+                    tarefas.setDescricao(tarefasDTO.descricao());
+                    tarefas.setStatus(tarefasDTO.status());
+                    tarefas.setDataCriacao(tarefasDTO.dataCriacao());
+                    tarefas.setDataAtualizacao(LocalDate.now());
+                    tarefas.setCategoria(tarefasDTO.categoria());
+
+                    Tarefas tarefasSalvas = tarefasRepository.save(tarefas);
+                    return new TarefasDTO(tarefasSalvas);
+                })
+                .orElse(null);
+    }
 }
