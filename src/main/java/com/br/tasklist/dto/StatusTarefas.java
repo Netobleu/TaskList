@@ -1,4 +1,4 @@
-package com.br.TaskList.dto;
+package com.br.tasklist.dto;
 
 public enum StatusTarefas {
     PENDENTE,

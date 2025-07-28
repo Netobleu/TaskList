@@ -1,4 +1,4 @@
-package com.br.TaskList.entities;
+package com.br.tasklist.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

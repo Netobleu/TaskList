@@ -1,8 +1,8 @@
-package com.br.TaskList.controller;
+package com.br.tasklist.controller;
 
-import com.br.TaskList.dto.CategoriaDTO;
-import com.br.TaskList.entities.Categoria;
-import com.br.TaskList.service.CategoriaService;
+import com.br.tasklist.dto.CategoriaDTO;
+import com.br.tasklist.entities.Categoria;
+import com.br.tasklist.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

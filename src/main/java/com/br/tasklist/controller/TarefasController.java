@@ -1,9 +1,9 @@
-package com.br.TaskList.controller;
+package com.br.tasklist.controller;
 
-import com.br.TaskList.dto.StatusTarefas;
-import com.br.TaskList.dto.TarefasDTO;
-import com.br.TaskList.entities.Tarefas;
-import com.br.TaskList.service.TarefasService;
+import com.br.tasklist.dto.StatusTarefas;
+import com.br.tasklist.dto.TarefasDTO;
+import com.br.tasklist.entities.Tarefas;
+import com.br.tasklist.service.TarefasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
