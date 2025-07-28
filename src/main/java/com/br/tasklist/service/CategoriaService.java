@@ -1,8 +1,8 @@
-package com.br.TaskList.service;
+package com.br.tasklist.service;
 
-import com.br.TaskList.dto.CategoriaDTO;
-import com.br.TaskList.entities.Categoria;
-import com.br.TaskList.repository.CategoriaRepository;
+import com.br.tasklist.dto.CategoriaDTO;
+import com.br.tasklist.entities.Categoria;
+import com.br.tasklist.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.br.TaskList.entities;
+package com.br.tasklist.entities;
 
-import com.br.TaskList.dto.StatusTarefas;
+import com.br.tasklist.dto.StatusTarefas;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

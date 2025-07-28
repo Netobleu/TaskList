@@ -1,6 +1,6 @@
-package com.br.TaskList.repository;
+package com.br.tasklist.repository;
 
-import com.br.TaskList.entities.Categoria;
+import com.br.tasklist.entities.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

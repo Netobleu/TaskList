@@ -1,7 +1,7 @@
-package com.br.TaskList.dto;
+package com.br.tasklist.dto;
 
-import com.br.TaskList.entities.Categoria;
-import com.br.TaskList.entities.Tarefas;
+import com.br.tasklist.entities.Categoria;
+import com.br.tasklist.entities.Tarefas;
 
 import java.time.LocalDate;
 

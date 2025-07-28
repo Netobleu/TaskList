@@ -1,12 +1,11 @@
-package com.br.TaskList.service;
+package com.br.tasklist.service;
 
-import com.br.TaskList.dto.StatusTarefas;
-import com.br.TaskList.dto.TarefasDTO;
-import com.br.TaskList.entities.Tarefas;
-import com.br.TaskList.repository.TarefasRepository;
+import com.br.tasklist.dto.StatusTarefas;
+import com.br.tasklist.dto.TarefasDTO;
+import com.br.tasklist.entities.Tarefas;
+import com.br.tasklist.repository.TarefasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.br.TaskList.repository;
+package com.br.tasklist.repository;
 
-import com.br.TaskList.dto.StatusTarefas;
-import com.br.TaskList.entities.Tarefas;
+import com.br.tasklist.dto.StatusTarefas;
+import com.br.tasklist.entities.Tarefas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
