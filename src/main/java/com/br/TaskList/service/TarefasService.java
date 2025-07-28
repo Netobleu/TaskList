@@ -6,6 +6,7 @@ import com.br.TaskList.entities.Tarefas;
 import com.br.TaskList.repository.TarefasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -58,5 +59,13 @@ public class TarefasService {
                     return new TarefasDTO(tarefasSalvas);
                 })
                 .orElse(null);
+    }
+
+    public boolean deletartarefa(Long id) {
+            if (tarefasRepository.existsById(id)) {
+                tarefasRepository.deleteById(id);
+                return true;
+            }
+            return false;
     }
 }

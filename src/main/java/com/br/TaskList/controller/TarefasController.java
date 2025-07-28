@@ -46,8 +46,16 @@ public class TarefasController {
         if (tarefaAtualizada == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-
         return ResponseEntity.ok(tarefaAtualizada);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        boolean deletado = tarefasService.deletartarefa(id);
+
+        if (deletado) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 }
