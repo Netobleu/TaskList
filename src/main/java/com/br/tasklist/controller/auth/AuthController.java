@@ -3,8 +3,7 @@ package com.br.tasklist.controller.auth;
 import com.br.tasklist.config.JwtUtil;
 import com.br.tasklist.dto.AuthRequest;
 import com.br.tasklist.dto.AuthResponse;
-import com.br.tasklist.service.CustomUserDatailsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.br.tasklist.service.CustomUserDetailsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -20,11 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
-    private final CustomUserDatailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
 
     public AuthController(AuthenticationManager authenticationManager,
-                          CustomUserDatailsService userDetailsService,
+                          CustomUserDetailsService userDetailsService,
                           JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
@@ -33,11 +32,18 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
+        System.out.println("Tentando autenticar usuário: " + request.getUsername());
+
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+                    new UsernamePasswordAuthenticationToken(
+                            request.getUsername(),
+                            request.getPassword()
+                    )
             );
+            System.out.println("Autenticação bem-sucedida!");
         } catch (BadCredentialsException ex) {
+            System.out.println("Falha de autenticação: senha incorreta ou usuário não encontrado!");
             return ResponseEntity.status(401).body(new AuthResponse("Credenciais inválidas"));
         }
 
@@ -47,6 +53,9 @@ public class AuthController {
                 user.getAuthorities().iterator().next().getAuthority()
         );
 
+        System.out.println("Token gerado com sucesso: " + token);
+
         return ResponseEntity.ok(new AuthResponse(token));
     }
+
 }

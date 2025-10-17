@@ -35,8 +35,6 @@ public class User implements UserDetails {
         return List.of(() -> "ROLE_" + role.name());
     }
 
-
-
     @Override public String getPassword() { return password; }
     @Override public String getUsername() { return login; }
     @Override public boolean isAccountNonExpired() { return true; }
@@ -44,4 +42,32 @@ public class User implements UserDetails {
     @Override public boolean isCredentialsNonExpired() { return true; }
     @Override public boolean isEnabled() { return true; }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
 }

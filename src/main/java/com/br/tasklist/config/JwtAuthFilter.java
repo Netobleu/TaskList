@@ -1,6 +1,6 @@
 package com.br.tasklist.config;
 
-import com.br.tasklist.service.CustomUserDatailsService;
+import com.br.tasklist.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +23,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private CustomUserDatailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;

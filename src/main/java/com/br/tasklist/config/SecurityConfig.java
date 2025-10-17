@@ -1,6 +1,6 @@
 package com.br.tasklist.config;
 
-import com.br.tasklist.service.CustomUserDatailsService;
+import com.br.tasklist.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,9 +19,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final CustomUserDatailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
 
-    public SecurityConfig(CustomUserDatailsService userDetailsService) {
+    public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
@@ -63,4 +63,5 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
+
 }
