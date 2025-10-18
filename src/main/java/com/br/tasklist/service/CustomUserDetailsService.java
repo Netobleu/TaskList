@@ -17,7 +17,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        System.out.println("Usuário encontrado: " + userRepository.count());
     }
 
     @Override
@@ -25,10 +24,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userRepository.findByLogin(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + username));
 
-        System.out.println("Tentando autenticar usuário: " + user.getLogin());
-        System.out.println("Senha criptografada no banco: " + user.getPassword());
-
-        // Garante que a ROLE seja reconhecida pelo Spring Security
         String role = "ROLE_" + user.getRole().name();
 
         return new org.springframework.security.core.userdetails.User(
