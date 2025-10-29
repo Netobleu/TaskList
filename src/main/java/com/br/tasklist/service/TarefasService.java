@@ -3,6 +3,7 @@ package com.br.tasklist.service;
 import com.br.tasklist.dto.StatusTarefas;
 import com.br.tasklist.dto.TarefasDTO;
 import com.br.tasklist.entities.Tarefas;
+import com.br.tasklist.exception.TarefaNaoEncontradaException;
 import com.br.tasklist.repository.TarefasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,21 +29,21 @@ public class TarefasService {
             return tarefasRepository.save(tarefas);
         }
 
-        public List<TarefasDTO> buscaTarefas(Long id, StatusTarefas status) {
-            if (id != 0) {
-                return tarefasRepository.findById(id)
-                        .map(tarefas -> List.of(new TarefasDTO(tarefas)))
-                        .orElse(null);
-            } else if (status != null) {
-                return tarefasRepository.findByStatus(status).stream()
-                        .map(TarefasDTO::new)
-                        .toList();
-            } else {
-                return tarefasRepository.findAll().stream()
-                        .map(TarefasDTO::new)
-                        .toList();
-            }
+    public List<TarefasDTO> buscaTarefas(Long id, StatusTarefas status) {
+        if (id != null && id != 0) {
+            return tarefasRepository.findById(id)
+                    .map(tarefas -> List.of(new TarefasDTO(tarefas)))
+                    .orElseThrow(() -> new TarefaNaoEncontradaException(id));
+        } else if (status != null) {
+            return tarefasRepository.findByStatus(status).stream()
+                    .map(TarefasDTO::new)
+                    .toList();
+        } else {
+            return tarefasRepository.findAll().stream()
+                    .map(TarefasDTO::new)
+                    .toList();
         }
+    }
 
     public TarefasDTO atualizarTarefa(Long id, TarefasDTO tarefasDTO) {
         return tarefasRepository.findById(id)
@@ -53,18 +54,16 @@ public class TarefasService {
                     tarefas.setDataCriacao(tarefasDTO.dataCriacao());
                     tarefas.setDataAtualizacao(LocalDate.now());
                     tarefas.setCategoria(tarefasDTO.categoria());
-
                     Tarefas tarefasSalvas = tarefasRepository.save(tarefas);
                     return new TarefasDTO(tarefasSalvas);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new TarefaNaoEncontradaException(id));
     }
 
-    public boolean deletartarefa(Long id) {
-            if (tarefasRepository.existsById(id)) {
-                tarefasRepository.deleteById(id);
-                return true;
-            }
-            return false;
+    public void deletartarefa(Long id) {
+        if (!tarefasRepository.existsById(id)) {
+            throw new TarefaNaoEncontradaException(id);
+        }
+        tarefasRepository.deleteById(id);
     }
 }
