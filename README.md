@@ -14,7 +14,7 @@ API REST **completa**, **segura** e **profissional** para gerenciamento de taref
 - **Tratamento global de exceções** (`404`, `400`, etc)
 - **Documentação interativa** com Swagger UI
 - **Migrations automáticas** com Flyway
-- **Banco MySQL** (produção) + H2 (desenvolvimento)
+- **Banco MySQL** (produção)
 
 ---
 
@@ -24,7 +24,7 @@ API REST **completa**, **segura** e **profissional** para gerenciamento de taref
 |-------|------------|
 | Framework | Spring Boot 3.4.2 |
 | Persistência | JPA + Hibernate |
-| Banco | MySQL + H2 (memória) |
+| Banco | MySQL |
 | Segurança | Spring Security + JWT (RS256) |
 | Documentação | SpringDoc OpenAPI (Swagger) |
 | Build | Maven |
@@ -50,7 +50,7 @@ API REST **completa**, **segura** e **profissional** para gerenciamento de taref
 
 Categorias
 
-Método,Endpoint,Descrição
+| Método | Endpoint | Descrição |
 
 POST,/api/v1/categorias,Criar categoria
 
@@ -77,12 +77,8 @@ Como Rodar
 # 1. Clone o projeto
 git clone https://github.com/IvonyNeto/TaskList.git
 cd TaskList
-
-# 2. Inicie o MySQL (ou use Docker)
-docker run -d --name mysql-tasklist -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=tasklist -p 3306:3306 mysql:8
-
-# 3. Execute a API
-./mvnw spring-boot:run
+cd target 
+java -jar TaskList-0.0.1-SNAPSHOT.jar
 
 Acesse:
 
@@ -114,21 +110,10 @@ Chaves privadas/públicas em src/main/resources/keys/
 Senhas criptografadas com BCrypt
 Apenas endpoints /auth/** e Swagger liberados
 
-Build .war (para Tomcat, etc)
-
-./mvnw clean package -DskipTests
-
-→ Gera: target/TaskList-0.0.1-SNAPSHOT.war
-Deploy em:
-
-Tomcat 10+
-Railway
-Render
-AWS Elastic Beanstalk
-
 Autor
 Ivony Neto
 linkedin.com/in/ivonyneto
 github.com/IvonyNeto
 
 Desenvolvido com foco em boas práticas, segurança e clareza.
+
