@@ -4,7 +4,7 @@ API REST **completa**, **segura** e **profissional** para gerenciamento de taref
 
 ---
 
-## CHECKMARK Funcionalidades
+##  Funcionalidades
 
 - **CRUD completo** de **Tarefas** e **Categorias**
 - Filtro de tarefas por **ID** e **status** (Pendente, Em Andamento, Concluída)
@@ -18,7 +18,7 @@ API REST **completa**, **segura** e **profissional** para gerenciamento de taref
 
 ---
 
-## CHECKMARK Tecnologias & Ferramentas
+## Tecnologias & Ferramentas
 
 | Camada | Tecnologia |
 |-------|------------|
@@ -35,9 +35,8 @@ API REST **completa**, **segura** e **profissional** para gerenciamento de taref
 
 ---
 
-## CHECKMARK Endpoints (Swagger: `/swagger-ui.html`)
-
-### CHECKMARK **Autenticação**
+**Endpoints** (Swagger: `/swagger-ui.html`)
+**Autenticação**
 
 
 ```json
@@ -50,27 +49,32 @@ API REST **completa**, **segura** e **profissional** para gerenciamento de taref
 
 Categorias
 
+```
+
 | Método | Endpoint | Descrição |
 
-POST,/api/v1/categorias,Criar categoria
+POST -> /api/v1/categorias -> Criar categoria
 
-GET,/api/v1/categorias,Listar todas ou por ID
+GET -> /api/v1/categorias -> Listar todas ou por ID
 
-PUT,/api/v1/categorias/{id},Atualizar nome
+PUT -> /api/v1/categorias/{id} -> Atualizar nome
 
-DELETE,/api/v1/categorias/{id},Deletar
+DELETE -> /api/v1/categorias/{id} -> Deletar
+```
 
 Tarefas
 
-Método,Endpoint,Parâmetros,Descrição
+```
+Método | Endpoint | Parâmetros | Descrição
 
-POST,/api/v1/tarefas,-,Criar tarefa
+POST -> /api/v1/tarefas,- -> Criar tarefa
 
-GET,/api/v1/tarefas,"id, status",Listar (filtro opcional)
+GET -> /api/v1/tarefas,"id, status" -> Listar (filtro opcional)
 
-PUT,/api/v1/tarefas,id (query),Atualizar tarefa
+PUT -> /api/v1/tarefas,id (query) -> Atualizar tarefa
 
-DELETE,/api/v1/tarefas/{id},-,Deletar
+DELETE -> /api/v1/tarefas/{id},- -> Deletar
+```
 
 Como Rodar
 
@@ -87,6 +91,7 @@ Swagger: http://localhost:8081/swagger-ui.html
 
 Estrutura do Projeto
 
+```
 src/
 ├── main/
 │   ├── java/com/br/tasklist/
@@ -103,11 +108,16 @@ src/
 │       ├── db/migration/   → Flyway V1__create_tables.sql
 │       └── application.yml
 
-Segurança
+```
+
+## Segurança
 
 JWT assinado com RSA 2048 bits
-Chaves privadas/públicas em src/main/resources/keys/
+
+Chaves privadas/públicas **em** src/main/resources/keys/
+
 Senhas criptografadas com BCrypt
+
 Apenas endpoints /auth/** e Swagger liberados
 
 Autor
@@ -116,4 +126,5 @@ linkedin.com/in/ivonyneto
 github.com/IvonyNeto
 
 Desenvolvido com foco em boas práticas, segurança e clareza.
+
 
