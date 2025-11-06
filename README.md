@@ -120,11 +120,13 @@ Senhas criptografadas com BCrypt
 
 Apenas endpoints /auth/** e Swagger liberados
 
-Autor
-Ivony Neto
-linkedin.com/in/ivonyneto
-github.com/IvonyNeto
+## Autor
+**Ivony Mesquita Neto**
+
+https://www.linkedin.com/in/ivony-mesquita-47a729241/
+
 
 Desenvolvido com foco em boas práticas, segurança e clareza.
+
 
 
